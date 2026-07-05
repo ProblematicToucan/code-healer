@@ -1,8 +1,7 @@
 import { readdir, rm, stat } from 'node:fs/promises';
 import path from 'node:path';
+import { config } from '../config.js';
 import { logger } from './logger.js';
-
-const WORKSPACE_DIR = 'workspace';
 
 export interface WorkspaceEntry {
   name: string;
@@ -13,7 +12,7 @@ export interface WorkspaceEntry {
  * Resolve the workspace root directory (project root + workspace).
  */
 export function getWorkspaceRoot(): string {
-  return path.join(process.cwd(), WORKSPACE_DIR);
+  return path.join(process.cwd(), config.workspace.dir);
 }
 
 /**
